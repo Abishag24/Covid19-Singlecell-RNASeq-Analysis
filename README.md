@@ -9,11 +9,21 @@ Single-cell profiling of the lung immune response across 4 disease groups using 
 
 ---
 
+## Project Summary
+
+This project analyzes bronchoalveolar lavage fluid (BALF) single-cell RNA-seq data (GSE149689) to characterize immune cell heterogeneity and identify transcriptional differences across severe COVID-19, mild COVID-19, influenza, and healthy conditions.
+
+**Key finding:** severe COVID-19 is marked by expansion of interferon-driven monocyte populations and immune dysregulation — not a globally stronger immune response.
+
+![Annotated UMAP](results/07_UMAP_annotated.png)
+
+---
+
 ## Background
 
 I wanted to work on a COVID dataset that wasn't just peripheral blood. Most scRNA-seq COVID papers use PBMCs, which tells you what's happening systemically — but not at the actual site of infection. BALF samples the lung directly, so the immune cells you're looking at are the ones actually dealing with the virus.
 
-This dataset has four groups (severe COVID, mild COVID, influenza, healthy), which means you can ask whether what you're seeing is COVID-specific or just a generic viral response. The severe vs. influenza comparison turned out to be the most interesting one.
+This dataset has four groups (severe COVID, mild COVID, influenza, healthy), which means you can ask whether observed immune signatures are COVID-specific or represent a general viral response. The severe vs. influenza comparison turned out to be the most interesting one.
 
 Dataset: GSE149689 — 20 donors, 85,144 raw cells.
 
@@ -25,10 +35,10 @@ Started with 85,144 cells, kept 56,821 after QC (filtered on nGenes 300–6000 a
 
 | Condition | Donors | Cells (post-QC) |
 |---|---|---|
-| Severe COVID-19 | 6 | 68,922 |
-| Mild / Asymptomatic COVID-19 | 5 | 20,327 |
+| Severe COVID-19 | 6 | 28,820 |
+| Mild / Asymptomatic COVID-19 | 5 | 8,201 |
 | Influenza | 5 | 10,171 |
-| Healthy Control | 4 | 17,401 |
+| Healthy Control | 4 | 9,629 |
 
 ---
 
@@ -50,6 +60,16 @@ Started with 85,144 cells, kept 56,821 after QC (filtered on nGenes 300–6000 a
 | Condition DEGs | Severe vs Healthy / Mild / Influenza |
 
 Resolution 0.5 was chosen after trying 0.3 (too coarse, merged monocyte subtypes) and 0.8 (over-split T cells in a biologically unsupported way). PC cutoff at 15 from the elbow plot.
+
+**QC — before and after filtering**
+
+| Before filtering | After filtering |
+|---|---|
+| ![QC Pre](results/01_QC_prefilter.png) | ![QC Post](results/02_QC_postfilter.png) |
+
+**Elbow plot — PC cutoff selection**
+
+![Elbow Plot](results/04_Elbow.png)
 
 ---
 
@@ -101,9 +121,23 @@ The monocyte compartment is way more heterogeneous than I expected — at least 
 
 > \* Cluster 18 (erythrocytes) is likely contamination or stress erythropoiesis — kept for completeness but excluded from downstream analysis.
 
+**Canonical marker expression across clusters**
+
+![Feature Plots](results/05_feature_plots.png)
+
+![Dot Plot](results/06_dotplot.png)
+
+---
+
 ### Condition-Level Distribution
 
-Severe COVID patients are heavily skewed toward monocyte clusters. Healthy donors are predominantly T cells. The shift is pretty striking visually — see `08_UMAP_condition.png` and `09_composition_bar.png`.
+Severe COVID patients are heavily skewed toward monocyte clusters. Healthy donors are predominantly T cells. The shift is pretty striking visually.
+
+![UMAP by Condition](results/08_UMAP_condition.png)
+
+![Cell Composition by Condition](results/09_composition_bar.png)
+
+---
 
 ### Differential Expression
 
@@ -112,6 +146,12 @@ Severe COVID patients are heavily skewed toward monocyte clusters. Healthy donor
 | Severe vs Healthy | 755 | Baseline immune landscape shift |
 | Severe vs Mild | 561 | More genes up in Mild (313 vs 248) |
 | Severe vs Influenza | 843 | More genes up in Influenza (572 vs 271) — most informative comparison |
+
+![Volcano — Severe vs Healthy](results/10_volcano_Severe_vs_Healthy.png)
+
+![Volcano — Severe vs Mild](results/11_volcano_Severe_vs_Mild.png)
+
+![Volcano — Severe vs Influenza](results/12_volcano_Severe_vs_Influenza.png)
 
 ---
 
@@ -160,7 +200,7 @@ Download `matrix.mtx`, `features.tsv`, and `barcodes.tsv` from [GSE149689](https
 
 ```r
 DATA_DIR <- "path/to/GSE149689"  # set this at the top of the script
-source("GSE149689_pipeline_fixed.R")
+source("COVID19_scRNAseq_GSE149689_FINAL.R")
 ```
 
 `results/` is created automatically. `FindAllMarkers` takes around 15 min; everything else is fast. Tested on R 4.3, Seurat 5.x, Windows 11.

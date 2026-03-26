@@ -50,6 +50,17 @@ I used resolution 0.5 after trying 0.3 (too coarse, merged monocyte subtypes tha
 
 ---
 
+⚙️ Methodological Rationale
+Each step in the pipeline was chosen for a specific reason — not just convention:
+
+Quality Control (QC): Filtering on nGenes (300–6000) and MT% (<15) removes low-quality cells, empty droplets, and dying cells that would introduce noise into clustering. Keeping MT% threshold at 15 (rather than stricter 10) preserved more cells given the inflammatory context of COVID BALF.
+Normalization (NormalizeData): Corrects for sequencing depth differences across cells so that gene expression comparisons reflect biology, not technical variation in library size.
+Highly Variable Gene Selection (2000 HVGs): Focuses downstream analysis on genes that actually differ between cell types, reducing noise from housekeeping genes.
+PCA → top 15 PCs: Dimensionality reduction before clustering. PC cutoff at 15 was chosen from the elbow plot — beyond that, PCs capture noise rather than meaningful variance.
+Clustering (resolution 0.5): Resolution was tuned empirically — 0.3 merged distinct monocyte subtypes; 0.8 over-split T cells in a biologically unsupported way. 0.5 gave 23 clusters that aligned with known immune populations.
+UMAP: Used for visualization only (not for clustering). Provides intuitive 2D representation of the high-dimensional transcriptional landscape.
+Marker Gene Identification (FindAllMarkers): Wilcoxon rank-sum test to identify genes significantly enriched per cluster, enabling biologically-informed cell type annotation.
+---
 ## Results
 
 ### Cell types
@@ -126,6 +137,39 @@ The Severe vs Mild comparison had a similar pattern — more genes up in mild (3
 
 ![Volcano severe vs influenza](results/12_volcano_Severe_vs_Influenza.png)
 *843 DEGs — severe vs influenza (most interesting one)*
+
+---
+🔬 Key Biological Findings
+
+Monocyte expansion in severe COVID: Severe patients show a dramatic shift toward innate immune dominance — monocyte clusters (particularly ISG Monocytes, Inflamed Monocytes, and Activated Monocytes) are disproportionately expanded compared to healthy controls and mild cases.
+ISG Monocyte signature is COVID-specific: Cluster 7 (SIGLEC1+, IFI44L+) is elevated in severe COVID beyond what's seen even in influenza — suggesting a SARS-CoV-2-specific interferon-driven innate response rather than a generic viral one.
+Dysregulation, not just activation: The severe vs influenza comparison (843 DEGs) shows more genes upregulated in influenza (572) than severe COVID (271), indicating severity in COVID is driven by immune dysregulation in specific innate pathways — not a globally stronger response.
+T cell compartment is relatively suppressed: Healthy donors are predominantly T cell-rich; severe COVID patients show relative depletion of this adaptive immune compartment at the site of infection, consistent with known impaired adaptive responses in severe disease.
+Innate-adaptive imbalance: Taken together, the compositional shifts and DEG patterns suggest a breakdown in the coordination between innate and adaptive immunity in severe COVID-19.
+
+💡 Biological Significance
+This analysis captures immune dynamics at the actual site of SARS-CoV-2 infection — the lung — rather than systemic blood markers, giving a more direct window into disease pathophysiology.
+
+The ISG monocyte expansion beyond influenza levels points to a virus-specific dysregulation of interferon signaling that may contribute to the cytokine-driven lung damage seen in severe COVID.
+The finding that mild COVID has more upregulated genes than severe disease supports a model where effective immune activation (not just strong activation) drives recovery, and where severity reflects qualitative dysregulation.
+The 6 distinct monocyte/DC populations in BALF highlight how cellular heterogeneity at the infection site is lost when only peripheral blood is analyzed — a finding relevant to understanding which cell populations are actually targetable therapeutically.
+These patterns are consistent with published work on cytokine storm mechanisms and provide a reproducible baseline for comparing future therapeutic interventions at single-cell resolution.
+
+⚠️ Limitations
+
+Sample size: 20 donors total, with 4–6 per group. Compositional shifts and DEG results should be interpreted with caution given limited statistical power for rare populations.
+No batch correction applied: Samples were processed together in the pipeline but no explicit batch correction (e.g., Harmony) was used. Donor-level effects may influence clustering.
+Cell type annotation is marker-based: Annotations rely on known marker genes from the literature and have not been experimentally validated (e.g., flow cytometry, CITE-seq protein co-expression).
+Cross-sectional design: All samples are single time points. There is no longitudinal data to track how these populations shift during disease progression or recovery.
+Cluster 18 (erythrocytes): Almost certainly technical contamination or stress erythropoiesis rather than a true immune population — not biologically meaningful for this analysis.
+
+🚀 Future Directions
+
+Cell-type-specific DEG analysis: Re-run differential expression within individual clusters (e.g., just ISG Monocytes) rather than across all cells, to resolve which cell populations are driving the condition-level differences.
+Batch correction: Apply Harmony or scVI to explicitly account for donor-level variation and test whether key findings hold after integration.
+Trajectory / pseudotime analysis: Use Monocle or RNA velocity to model monocyte state transitions — particularly whether the ISG monocyte state is a terminal activation state or a transient one.
+Pathway enrichment: Run GSEA or GO enrichment on the condition DEG lists to identify which biological processes (complement, coagulation, interferon pathways) are most significantly altered.
+Extend to published datasets: Integrate with other published COVID BALF datasets (e.g., GSE145926) to test reproducibility across cohorts and expand statistical power.
 
 ---
 

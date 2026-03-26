@@ -1,0 +1,90 @@
+"condition","cell_type","n","pct"
+"Healthy","Activated Monocyte",2,0.0114935923222803
+"Healthy","CD14 Monocyte",1031,5.92494684213551
+"Healthy","CD16 Monocyte",1333,7.66047928279984
+"Healthy","CD4 Effector T cell",1,0.00574679616114016
+"Healthy","CD8 T cell",2697,15.499109246595
+"Healthy","Classical DC",277,1.59186253663583
+"Healthy","Cycling T cell",117,0.672375150853399
+"Healthy","Early Monocyte",16,0.0919487385782426
+"Healthy","Erythrocyte",3,0.0172403884834205
+"Healthy","ISG Monocyte",1162,6.67777713924487
+"Healthy","ISG cell",2,0.0114935923222803
+"Healthy","Inflamed Monocyte",1993,11.4533647491523
+"Healthy","Memory B cell",76,0.436756508246653
+"Healthy","NK cell",1542,8.86155968047813
+"Healthy","NK/gdT cell",2627,15.0968335153152
+"Healthy","Naive B cell",1147,6.59157519682777
+"Healthy","Naive CD4 T cell",2339,13.4417562209068
+"Healthy","Neutrophil",5,0.0287339808057008
+"Healthy","Plasma cell",82,0.471237285213494
+"Healthy","Plasmablast",743,4.26986954772714
+"Healthy","Platelet",178,1.02292971668295
+"Healthy","Pre-B cell",27,0.155163496350784
+"Healthy","Regulatory T cell",1,0.00574679616114016
+"Influenza","Activated Monocyte",2837,27.8930292006686
+"Influenza","CD14 Monocyte",244,2.39897748500639
+"Influenza","CD16 Monocyte",276,2.71359748304002
+"Influenza","CD4 Effector T cell",1305,12.8305967948088
+"Influenza","CD8 T cell",739,7.26575557958903
+"Influenza","Classical DC",25,0.24579687346377
+"Influenza","Cycling T cell",346,3.40182872873857
+"Influenza","Early Monocyte",1424,14.0005899124963
+"Influenza","Erythrocyte",186,1.82872873857045
+"Influenza","ISG Monocyte",24,0.235964998525219
+"Influenza","ISG cell",1,0.00983187493855078
+"Influenza","Inflamed Monocyte",797,7.83600432602497
+"Influenza","Memory B cell",10,0.0983187493855078
+"Influenza","NK cell",361,3.54930685281683
+"Influenza","NK/gdT cell",661,6.49886933438207
+"Influenza","Naive B cell",297,2.92006685674958
+"Influenza","Naive CD4 T cell",186,1.82872873857045
+"Influenza","Neutrophil",37,0.363779372726379
+"Influenza","Plasma cell",20,0.196637498771016
+"Influenza","Plasmablast",143,1.40595811621276
+"Influenza","Platelet",71,0.698063120637106
+"Influenza","Pre-B cell",7,0.0688231245698555
+"Influenza","Regulatory T cell",174,1.71074623930784
+"Mild_COVID","Activated Monocyte",1,0.00491956511044424
+"Mild_COVID","CD14 Monocyte",573,2.81891080828455
+"Mild_COVID","CD16 Monocyte",891,4.38333251340581
+"Mild_COVID","CD4 Effector T cell",4,0.0196782604417769
+"Mild_COVID","CD8 T cell",3730,18.349977861957
+"Mild_COVID","Classical DC",241,1.18561519161706
+"Mild_COVID","Cycling T cell",335,1.64805431199882
+"Mild_COVID","Early Monocyte",6,0.0295173906626654
+"Mild_COVID","Erythrocyte",8,0.0393565208835539
+"Mild_COVID","ISG Monocyte",1390,6.83819550351749
+"Mild_COVID","ISG cell",53,0.260736950853545
+"Mild_COVID","Inflamed Monocyte",3239,15.9344713927289
+"Mild_COVID","Memory B cell",94,0.462439120381758
+"Mild_COVID","NK cell",2583,12.7072366802775
+"Mild_COVID","NK/gdT cell",582,2.86318689427855
+"Mild_COVID","Naive B cell",1750,8.60923894327741
+"Mild_COVID","Naive CD4 T cell",2959,14.5569931618045
+"Mild_COVID","Plasma cell",109,0.536232597038422
+"Mild_COVID","Plasmablast",887,4.36365425296404
+"Mild_COVID","Platelet",843,4.14719338810449
+"Mild_COVID","Pre-B cell",49,0.241058690411768
+"Severe_COVID","Activated Monocyte",13,0.145707240529029
+"Severe_COVID","CD14 Monocyte",299,3.35126653216768
+"Severe_COVID","CD16 Monocyte",89,0.997534185160278
+"Severe_COVID","CD4 Effector T cell",3,0.0336247478143914
+"Severe_COVID","CD8 T cell",739,8.28289621161175
+"Severe_COVID","Classical DC",14,0.156915489800493
+"Severe_COVID","Cycling T cell",85,0.952701188074423
+"Severe_COVID","Early Monocyte",136,1.52432190091908
+"Severe_COVID","Erythrocyte",135,1.51311365164761
+"Severe_COVID","ISG Monocyte",41,0.459538220130016
+"Severe_COVID","ISG cell",528,5.91795561533289
+"Severe_COVID","Inflamed Monocyte",1598,17.9107823357991
+"Severe_COVID","Memory B cell",19,0.212956736157812
+"Severe_COVID","NK cell",542,6.07487110513338
+"Severe_COVID","NK/gdT cell",140,1.56915489800493
+"Severe_COVID","Naive B cell",861,9.65030262273033
+"Severe_COVID","Naive CD4 T cell",859,9.6278861241874
+"Severe_COVID","Neutrophil",721,8.0811477247254
+"Severe_COVID","Plasma cell",102,1.14324142568931
+"Severe_COVID","Plasmablast",523,5.86191436897557
+"Severe_COVID","Platelet",1439,16.1286707016364
+"Severe_COVID","Pre-B cell",36,0.403496973772697

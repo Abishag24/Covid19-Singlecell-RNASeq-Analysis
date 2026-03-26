@@ -1,0 +1,14 @@
+# Ignore raw data
+*.rds
+*.RDS
+*.mtx
+*.tsv
+*.csv
+
+# Ignore results folder (we’ll add only small images later)
+results/
+
+# R environment
+.Rhistory
+.RData
+.Rproj.user/

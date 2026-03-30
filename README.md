@@ -1,4 +1,4 @@
-# 🦠 scRNA-seq Analysis of COVID-19 Bronchoalveolar Lavage Fluid (BALF)
+scRNA-seq Analysis of COVID-19 Bronchoalveolar Lavage Fluid (BALF)
 
 Single-cell profiling of the lung immune response across 4 disease groups using Seurat (GSE149689).
 
@@ -9,7 +9,7 @@ Single-cell profiling of the lung immune response across 4 disease groups using 
 
 ---
 
-## 📌 Project Summary
+## Project Summary
 
 This project analyzes bronchoalveolar lavage fluid (BALF) single-cell RNA-seq data (GSE149689) to characterize immune cell heterogeneity and identify transcriptional differences across severe COVID-19, mild COVID-19, influenza, and healthy conditions.
 
@@ -19,7 +19,7 @@ This project analyzes bronchoalveolar lavage fluid (BALF) single-cell RNA-seq da
 
 ---
 
-## 🧬 Background
+##  Background
 
 I wanted to work on a COVID dataset that wasn't just peripheral blood. Most scRNA-seq COVID papers use PBMCs, which tells you what's happening systemically — but not at the actual site of infection. BALF samples the lung directly, so the immune cells you're looking at are the ones actually dealing with the virus.
 
@@ -29,7 +29,7 @@ Dataset: [GSE149689](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE14968
 
 ---
 
-## 📖 Glossary
+##  Glossary
 
 New to single-cell RNA-seq? Here are the key terms used throughout:
 
@@ -46,7 +46,7 @@ New to single-cell RNA-seq? Here are the key terms used throughout:
 
 ---
 
-## 📊 Dataset
+##  Dataset
 
 Started with 85,144 cells, kept 56,821 after QC (filtered on nGenes 300–6000 and MT% < 15).
 
@@ -59,7 +59,7 @@ Started with 85,144 cells, kept 56,821 after QC (filtered on nGenes 300–6000 a
 
 ---
 
-## 🔧 Pipeline
+##  Pipeline
 
 | Step | Detail |
 |---|---|
@@ -90,7 +90,7 @@ Resolution 0.5 was chosen after trying 0.3 (too coarse — merged monocyte subty
 
 ---
 
-## ⚙️ Methodological Rationale
+##  Methodological Rationale
 
 Each step was chosen for a specific reason — not just convention:
 
@@ -106,7 +106,7 @@ Each step was chosen for a specific reason — not just convention:
 
 ---
 
-## 📈 Results
+##  Results
 
 ### Cell Types — 23 Clusters
 
@@ -187,7 +187,7 @@ The severe vs. influenza comparison had the most DEGs (843), but more genes were
 
 ---
 
-## 🔬 Key Biological Findings
+##  Key Biological Findings
 
 - **Interferon-driven monocyte dominance:** Severe COVID lungs are dominated by ISG monocytes (SIGLEC1+, IFI44L+) — indicating immune dysregulation, not a globally stronger immune response
 - **COVID-specific, not a generic viral response:** ISG monocyte expansion exceeds what's seen in influenza, pointing to a SARS-CoV-2-specific interferon dysregulation
@@ -198,7 +198,7 @@ The severe vs. influenza comparison had the most DEGs (843), but more genes were
 
 ---
 
-## 💡 Biological Significance
+##  Biological Significance
 
 This analysis captures immune dynamics at the actual lung infection site — not systemic blood signals — giving a more direct view of COVID pathophysiology.
 
@@ -209,7 +209,7 @@ This analysis captures immune dynamics at the actual lung infection site — not
 
 ---
 
-## ⚠️ Limitations
+##  Limitations
 
 - **Sample size:** 20 donors, 4–6 per group — interpret rare population results with caution
 - **No batch correction:** No Harmony/scVI applied; donor-level effects may be influencing some clustering
@@ -219,7 +219,7 @@ This analysis captures immune dynamics at the actual lung infection site — not
 
 ---
 
-## 🚀 Future Directions
+##  Future Directions
 
 - **Cluster-specific DEG analysis** — Re-run differential expression within individual clusters (e.g., ISG Monocytes only) to pin down which populations drive condition-level differences
 - **Batch correction** — Apply Harmony or scVI and validate whether key findings hold after integration
@@ -229,7 +229,7 @@ This analysis captures immune dynamics at the actual lung infection site — not
 
 ---
 
-## 🛠️ Skills & Contributions
+##  Skills & Contributions
 
 - **Seurat 5.x** — end-to-end scRNA-seq pipeline (QC, normalisation, PCA, clustering, UMAP)
 - **Differential expression** — Wilcoxon rank-sum across 4 disease conditions (755–843 DEGs per comparison)
@@ -239,7 +239,7 @@ This analysis captures immune dynamics at the actual lung infection site — not
 
 ---
 
-## 🔁 Reproduce
+##  Reproduce
 
 ### Package Versions
 
@@ -274,7 +274,7 @@ source("COVID19_scRNAseq_GSE149689_FINAL.R")
 
 ---
 
-## 📁 Output Files
+##  Output Files
 
 ```
 results/
@@ -302,6 +302,6 @@ gse149689_final.rds             ← annotated Seurat object
 
 ---
 
-## 📚 Reference
+##  Reference
 
 Liao M, Liu Y, Yuan J, et al. Single-cell landscape of bronchoalveolar immune cells in patients with COVID-19. *Nature Medicine.* 2020;26:842–844. https://doi.org/10.1038/s41591-020-0901-9

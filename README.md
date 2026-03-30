@@ -182,6 +182,23 @@ The severe vs. influenza comparison had the most DEGs (843), but more genes were
 - Integrate with GSE145926 and other published COVID BALF datasets to improve statistical power.
 
 ---
+## Key Biological Findings
+
+- Severe COVID lungs are dominated by overactive interferon-driven monocytes (ISG monocytes), indicating immune dysregulation rather than a globally stronger immune response.
+- At least 6 distinct monocyte / dendritic cell subtypes are expanded differently across conditions, showing specialized immune responses in the lung.
+- Healthy lungs are rich in T cells (CD8+ and CD4+), while severe COVID lungs show T cell depletion, suggesting impaired adaptive immunity.
+- Compared to influenza, severe COVID shows focused activation of interferon, complement, and inflammation pathways — a SARS-CoV-2-specific response.
+- Platelet and neutrophil signals hint at coagulation and inflammatory processes contributing to lung pathology.
+- Cluster 18 (erythrocytes) likely represents stress or contamination, highlighting careful quality control.
+
+  ## Skills & Contributions
+
+- Designed and executed a single-cell RNA-seq analysis pipeline using Seurat (QC, normalization, PCA, clustering, UMAP visualization)
+- Performed differential expression analysis across disease conditions (severe COVID, mild COVID, influenza, healthy)
+- Interpreted immune cell heterogeneity and dysregulation in severe COVID lungs, highlighting ISG monocyte expansion and T cell depletion
+- Produced publication-quality figures and reports (feature plots, dot plots, volcano plots, cell composition charts)
+- Ensured reproducibility with annotated R scripts and clear data processing workflow
+- Applied critical assessment of dataset limitations, including batch effects, sample size, and technical artifacts
 
 ## Reproduce
 

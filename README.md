@@ -21,7 +21,7 @@ This project analyzes bronchoalveolar lavage fluid (BALF) single-cell RNA-seq da
 
 ##  Background
 
-I wanted to work on a COVID dataset that wasn't just peripheral blood. Most scRNA-seq COVID papers use PBMCs, which tells you what's happening systemically — but not at the actual site of infection. BALF samples the lung directly, so the immune cells you're looking at are the ones actually dealing with the virus.
+BALF samples the lung directly, so the immune cells you're looking at are the ones actually dealing with the virus.
 
 This dataset has four groups (severe COVID, mild COVID, influenza, healthy), which means you can ask whether observed immune signatures are COVID-specific or represent a general viral response. The severe vs. influenza comparison turned out to be the most interesting one.
 

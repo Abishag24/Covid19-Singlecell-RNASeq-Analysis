@@ -1,4 +1,4 @@
-#  scRNA-seq Analysis of COVID-19 Bronchoalveolar Lavage Fluid (BALF)
+# 🦠 scRNA-seq Analysis of COVID-19 Bronchoalveolar Lavage Fluid (BALF)
 
 Single-cell profiling of the lung immune response across 4 disease groups using Seurat (GSE149689).
 
@@ -9,19 +9,19 @@ Single-cell profiling of the lung immune response across 4 disease groups using 
 
 ---
 
-##  Project Summary
+## 📌 Project Summary
 
 This project analyzes bronchoalveolar lavage fluid (BALF) single-cell RNA-seq data (GSE149689) to characterize immune cell heterogeneity and identify transcriptional differences across severe COVID-19, mild COVID-19, influenza, and healthy conditions.
 
 > **Key finding:** COVID severity isn't a bigger immune response — it's a more dysregulated one concentrated in specific innate pathways.
 
-![Annotated UMAP](results/07_UMAP_annotated.png)
+![Annotated UMAP](results/08_UMAP_annotated.png)
 
 ---
 
-##  Background
+## 🧬 Background
 
-BALF samples the lung directly, so the immune cells you're looking at are the ones actually dealing with the virus.
+I wanted to work on a COVID dataset that wasn't just peripheral blood. Most scRNA-seq COVID papers use PBMCs, which tells you what's happening systemically — but not at the actual site of infection. BALF samples the lung directly, so the immune cells you're looking at are the ones actually dealing with the virus.
 
 This dataset has four groups (severe COVID, mild COVID, influenza, healthy), which means you can ask whether observed immune signatures are COVID-specific or represent a general viral response. The severe vs. influenza comparison turned out to be the most interesting one.
 
@@ -29,7 +29,7 @@ Dataset: [GSE149689](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE14968
 
 ---
 
-##  Glossary
+## 📖 Glossary
 
 New to single-cell RNA-seq? Here are the key terms used throughout:
 
@@ -46,7 +46,7 @@ New to single-cell RNA-seq? Here are the key terms used throughout:
 
 ---
 
-##  Dataset
+## 📊 Dataset
 
 Started with 85,144 cells, kept 56,821 after QC (filtered on nGenes 300–6000 and MT% < 15).
 
@@ -59,7 +59,7 @@ Started with 85,144 cells, kept 56,821 after QC (filtered on nGenes 300–6000 a
 
 ---
 
-##  Pipeline
+## 🔧 Pipeline
 
 | Step | Detail |
 |---|---|
@@ -90,7 +90,7 @@ Resolution 0.5 was chosen after trying 0.3 (too coarse — merged monocyte subty
 
 ---
 
-##  Methodological Rationale
+## ⚙️ Methodological Rationale
 
 Each step was chosen for a specific reason — not just convention:
 
@@ -106,14 +106,16 @@ Each step was chosen for a specific reason — not just convention:
 
 ---
 
-##  Results
+## 📈 Results
 
 ### Cell Types — 23 Clusters
 
 The monocyte compartment is way more heterogeneous than I expected — at least 6 distinct monocyte/DC populations (Clusters 1, 6, 7, 8, 11, 12, 17). This level of detail only shows up because BALF was used instead of blood.
 
+![UMAP Clusters](results/05_UMAP_clusters.png)
+
 <details>
-<summary> Click to expand full cluster annotation table</summary>
+<summary>📋 Click to expand full cluster annotation table</summary>
 
 | Cluster | Cell Type | Key Markers |
 |---|---|---|
@@ -147,9 +149,9 @@ The monocyte compartment is way more heterogeneous than I expected — at least 
 
 ### Canonical Marker Expression
 
-![Feature Plots](results/05_feature_plots.png)
+![Feature Plots](results/06_feature_plots.png)
 
-![Dot Plot](results/06_dotplot.png)
+![Dot Plot](results/07_dotplot.png)
 
 ---
 
@@ -157,9 +159,9 @@ The monocyte compartment is way more heterogeneous than I expected — at least 
 
 Severe COVID patients are heavily skewed toward monocyte clusters. Healthy donors are predominantly T cells. The shift is pretty striking visually.
 
-![UMAP by Condition](results/08_UMAP_condition.png)
+![UMAP by Condition](results/09_UMAP_condition.png)
 
-![Cell Composition by Condition](results/09_composition_bar.png)
+![Cell Composition by Condition](results/10_composition_bar.png)
 
 ---
 
@@ -171,11 +173,11 @@ Severe COVID patients are heavily skewed toward monocyte clusters. Healthy donor
 | Severe vs Mild | 561 | 248 | 313 | More genes up in Mild |
 | Severe vs Influenza | 843 | 271 | 572 | More genes up in Influenza — most informative |
 
-![Volcano — Severe vs Healthy](results/10_volcano_Severe_vs_Healthy.png)
+![Volcano — Severe vs Healthy](results/11_volcano_Severe_vs_Healthy.png)
 
-![Volcano — Severe vs Mild](results/11_volcano_Severe_vs_Mild.png)
+![Volcano — Severe vs Mild](results/12_volcano_Severe_vs_Mild.png)
 
-![Volcano — Severe vs Influenza](results/12_volcano_Severe_vs_Influenza.png)
+![Volcano — Severe vs Influenza](results/13_volcano_Severe_vs_Influenza.png)
 
 ---
 
@@ -187,18 +189,18 @@ The severe vs. influenza comparison had the most DEGs (843), but more genes were
 
 ---
 
-##  Key Biological Findings
+## 🔬 Key Biological Findings
 
 - **Interferon-driven monocyte dominance:** Severe COVID lungs are dominated by ISG monocytes (SIGLEC1+, IFI44L+) — indicating immune dysregulation, not a globally stronger immune response
 - **COVID-specific, not a generic viral response:** ISG monocyte expansion exceeds what's seen in influenza, pointing to a SARS-CoV-2-specific interferon dysregulation
 - **T cell depletion at the infection site:** Healthy lungs are rich in CD8+ and CD4+ T cells; severe COVID shows marked depletion of this adaptive compartment
 - **Dysregulation over volume:** Influenza has more total upregulated genes than severe COVID — severity is about focused dysregulation in innate pathways, not a bigger overall response
-- **Rich monocyte heterogeneity:** 6 distinct monocyte/DC subtypes are visible in BALF that would be invisible in peripheral blood
+- **Rich monocyte heterogeneity:** 6 distinct monocyte/DC subtypes visible in BALF that would be invisible in peripheral blood
 - **Coagulation and inflammatory signals:** Platelet and neutrophil clusters hint at coagulation and inflammatory processes contributing to lung pathology
 
 ---
 
-##  Biological Significance
+## 💡 Biological Significance
 
 This analysis captures immune dynamics at the actual lung infection site — not systemic blood signals — giving a more direct view of COVID pathophysiology.
 
@@ -209,7 +211,7 @@ This analysis captures immune dynamics at the actual lung infection site — not
 
 ---
 
-##  Limitations
+## ⚠️ Limitations
 
 - **Sample size:** 20 donors, 4–6 per group — interpret rare population results with caution
 - **No batch correction:** No Harmony/scVI applied; donor-level effects may be influencing some clustering
@@ -219,7 +221,7 @@ This analysis captures immune dynamics at the actual lung infection site — not
 
 ---
 
-##  Future Directions
+## 🚀 Future Directions
 
 - **Cluster-specific DEG analysis** — Re-run differential expression within individual clusters (e.g., ISG Monocytes only) to pin down which populations drive condition-level differences
 - **Batch correction** — Apply Harmony or scVI and validate whether key findings hold after integration
@@ -229,7 +231,7 @@ This analysis captures immune dynamics at the actual lung infection site — not
 
 ---
 
-##  Skills & Contributions
+## 🛠️ Skills & Contributions
 
 - **Seurat 5.x** — end-to-end scRNA-seq pipeline (QC, normalisation, PCA, clustering, UMAP)
 - **Differential expression** — Wilcoxon rank-sum across 4 disease conditions (755–843 DEGs per comparison)
@@ -239,7 +241,7 @@ This analysis captures immune dynamics at the actual lung infection site — not
 
 ---
 
-##  Reproduce
+## 🔁 Reproduce
 
 ### Package Versions
 
@@ -274,7 +276,7 @@ source("COVID19_scRNAseq_GSE149689_FINAL.R")
 
 ---
 
-##  Output Files
+## 📁 Output Files
 
 ```
 results/
@@ -282,26 +284,25 @@ results/
 ├── 02_QC_postfilter.png
 ├── 03_HVG.png
 ├── 04_Elbow.png
-├── 05_feature_plots.png        ← canonical markers on UMAP
-├── 06_dotplot.png
-├── 07_UMAP_annotated.png       ← main result
-├── 08_UMAP_condition.png
-├── 09_composition_bar.png
-├── 10_volcano_Severe_vs_Healthy.png
-├── 11_volcano_Severe_vs_Mild.png
-├── 12_volcano_Severe_vs_Influenza.png
+├── 05_UMAP_clusters.png
+├── 06_feature_plots.png        ← canonical markers on UMAP
+├── 07_dotplot.png
+├── 08_UMAP_annotated.png       ← main result
+├── 09_UMAP_condition.png
+├── 10_composition_bar.png
+├── 11_volcano_Severe_vs_Healthy.png
+├── 12_volcano_Severe_vs_Mild.png
+├── 13_volcano_Severe_vs_Influenza.png
 ├── markers_all.csv             ← 17,807 DE genes
 ├── markers_top5.csv
 ├── cell_composition.csv
 ├── DEG_SevereCOVID_vs_Healthy.csv
 ├── DEG_SevereCOVID_vs_MildCOVID.csv
 └── DEG_SevereCOVID_vs_Influenza.csv
-
-gse149689_final.rds             ← annotated Seurat object
 ```
 
 ---
 
-##  Reference
+## 📚 Reference
 
 Liao M, Liu Y, Yuan J, et al. Single-cell landscape of bronchoalveolar immune cells in patients with COVID-19. *Nature Medicine.* 2020;26:842–844. https://doi.org/10.1038/s41591-020-0901-9
